@@ -1,0 +1,36 @@
+.p {
+  font-size: 18px;
+}
+.legal-reference {
+  font-weight: bold;
+}
+.popover{
+  max-width: 50%; /* Max Width of the popover (depending on the container!) */
+}
+.dates-string {
+  /*font-weight: bold;*/
+}
+.legal-links {
+  color: #FF7F50;
+}
+#textField{
+  float: left;
+  width: 60%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+#timelineContent{
+  margin-left: 1%;
+  float: left;
+  min-height: 300px;
+  width: 39%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+#mybuttons{
+  display: flex;
+  justify-content: left;
+}
+.custom-button{
+  padding: 10px;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Legal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="dist/css/legal.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Recueil numérique des ATF</a>
+            </div>
+            <!-- /.navbar-header -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Index</a>
+                        </li>
+                        <li>
+                            <a href="atf.html"><i class="fa fa-dashboard fa-fw"></i> ATF</a>
+                        </li>
+                        <li>
+                            <a href="detectionatf.html"><i class="fa fa-dashboard fa-fw"></i> Détection ATF</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Recueil numérique des Arrêts du Tribunal Fédéral</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <!-- Content -->
+            <div id="textContent">
+              <div class="panel panel-default">
+                <div class="panel-heading"><img src="pictures/balance-small.jpg" class="img-fluid" alt="Responsive image"></div>
+                <div class="panel-body">
+
+
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h4>Contexte de développement</h4></div>
+                      <div class="panel-body">
+                      <p>Projet réalisé par <b>Daniela-Maria Toma</b> (Master en Humanités Numériques avec spécialisation Informatique pour les Sciences Humaines) dans le cadre du cours Publications numériques enseigné par Isaac Pante dans la Faculté des Lettres de l’Université de Lausanne.</p>
+                      <p>Projet disponible à l'adresse : https://danielamtoma.github.io/.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Description</h4></div>
+                      <div class="panel-body">
+                        <p>Le projet vise à faciliter la lecture des Arrêts du Tribunal Fédéral en ajoutant des informations non-présentes dans les arrêts initiaux.</p>
+                        <p>
+                          Ces enrichissements prennent la forme d'articles de lois et de mise en évidence des dates dans l'exposé des faits.
+                          Il est parfois difficile de lire des arrêts ou des textes légaux car il est nécessaire d'avoir les textes légaux à portées de main pour comprendre leurs implications.
+                          Ce projet permet de récupérer le contenu brut (au format texte, sans balises html) des ATF et, par une détection d'articles de loi basée sur des expressions régulières, mettre en évidence les articles de loi et en fournir leur contenu sur simple déplacement de la souris sur ceux-ci.
+                          Il permet également de détecter les années dans l'exposé des faits et de les afficher dans une timeline afin de faciliter le suivi des événements.
+                        </p>
+                        <p>Les données proviennent du site du Tribunal Fédéral (liste des ATF) ainsi que du site de la Confédération Suisse (liste des textes de lois). Seuls les textes de lois suivants ont été utilisés dans la réalisation de ce projet: "CC", "CP", "Cst", "CO", "LPD", "CPP", "CPC".
+                        <p>Il n'est toutefois pas compliqué d'ajouter de nouveaux textes légaux (à placer au format .json dans le dossier data/atf/legal). </p>
+                        <p>Le projet est divisé en 3 parties: </p>
+                        <h5>1. Liste des Arrêts du Tribunal Fédéral (ATF)</h5>
+                          <p>761 Arrêts du Tribunal Fédéral établis entre 1954 et 2018 peuvent être consultés. Ces ATF sont affichés dans un tableau qui permet de les trier par différentes valeurs et d'en afficher un certain nombre par pages.</p>
+                          <p>En cliquant sur le nom d'un arrêt, il est possible de le visualiser avec les enrichissements d'articles et de dates</p>
+                        <h5>2. Visualisation des Arrêts du Tribunal Fédéral (ATF)</h5>
+                          <p>La page de visualisation des Arrêts permet de lire le contenu des arrêts et d'afficher le contenu des articles de lois mentionnés en passant la souris sur le lien. Il permet également d'afficher une timeline qui reprend les dates de l'exposé des faits. Passer la souris sur les dates de la timeline permet de mettre en surbrillance les phrases contenant ces dates.</p>
+                        <h5>3. Copie du contenu d'un ATF pour visualisation enrichie</h5>
+                          <p>Si l'un des arrêt qui nous intéresse n'est pas disponible dans la liste, il est possible de se rendre sur le site https://www.bger.ch/ext/eurospider/live/fr/php/clir/http/index.php?lang=fr&type=simple_query&query_words=%2Bvaud&lang=fr&top_subcollection_clir=bge&from_year=1954&to_year=2019&x=55&y=15 et copier-coller le contenu au format texte sur la page: . Le texte sera alors enrichi des articles de loi et des dates.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h4>Développement et outils employés</h4></div>
+                        <div class="panel-body">
+                          <p>Les données ont été téléchargées et manipulées en Python (récupération des données (Selenium et Lxml), formatage des données (Expressions régulières), sauvegarde des données (Json).</p>
+                          <p>Dans la phase de développement, le contenu de la page a été réalisé en utilisant les outils suivants :</p>
+                          <p><b>Langages :</b>
+                          <p>
+                            <ul>
+                              <li>Javascript</li>
+                              <li>Html et CSS</li>
+                            </ul>
+                          </p>
+                          <p><b>Ressources et librairies :</b></p>
+                          <p>
+                            <ul>
+                              <li>jquery</li>
+                              <li>bootstrap</li>
+                              <li>dataTables</li>
+                              <li>metisMenu</li>
+                              <li>font-awesome</li>
+                            </ul>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h4>Problèmes rencontrés</h4></div>
+                          <div class="panel-body">
+                            <p>Bien que l'idée puisse paraître relativement simple, sa mise en place s'est avérée très compliquée pour plusieurs raisons. Tout d'abord, tous les ATF ne sont pas formatés de la même manière. Cela peut dépendre de plusieurs facteurs comme des changements de procédé au fil des années, des auteurs différents ainsi que des erreurs de syntaxe. Cela a induit une certaine complexité dans les expressions régulières utilisées et un nombre élevé de faux positifs (gestion des erreurs obligatoire).</p>
+                            <p>Un second problème provenait de la complexité des phrases dans le milieu juridique. Les phrases sont composées d'abréviation, de ponctuation et de syntaxe qui peuvent varier d'un ATF à un autre. Il n'est par conséquent pas possible de détecter le début et la fin d'une phrase en se basant sur la ponctuation (à cause d'éléments comme "art., al., A., etc.")</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading"><h4>Améliorations possibles</h4></div>
+                            <div class="panel-body">
+                              <p><b>Problème persistants :</b></p>
+                              <p>
+                                <ul>
+
+                                  <li>De nombreuses erreurs persistent. Il faudrait créer un certain nombre d'exceptions et adapter les expressions régulières pour régler ce problème.</li>
+                                  <li>De par l'intrication des expréssions régulières, deux éléments utilisant la même syntaxe (par exemple "(Art. 122 CP)" et "(Art. 122 CP)") ne seront pas détectée de la même façon. Structurer d'avantage le texte avant traitement en Javascript réduirait ce problème.</li>
+                                </ul>
+                              </p>
+                              <p><b>Améliorations :</b></p>
+                              <ul>
+                                  <li>Mettre en page le contenu des ATF d'une façon plus lisible.</li>
+                                  <li>Ajouter d'autres éléments de visualisation, comme les coûts mentionnés dans les faits.</li>
+                                  <li>Ajouter des références aux autres ATF dans le contenu du texte.</li>
+                                  <li>Prendre en compte la langue (Allemand, Français, Italien). Pour le moment, seul le français fonctionne.</li>
+                                  <li>Permettre le choix de la langue pour afficher les articles de lois dans la langue correspondante.</li>
+                                </ul>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                <div class="panel-footer">Cours: Publication Numérique 2018 - Daniela-Maria Toma</div>
+              </div>
+            </div>
+            <!-- End of content -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Legal JavaScript -->
+    <script src="js/legal.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
