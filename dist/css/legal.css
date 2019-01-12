@@ -10,14 +10,22 @@
 .dates-string {
   /*font-weight: bold;*/
 }
-.legal-links {
-  color: #FF7F50;
+a.legal-links {
+  color: #649ddb;
+  text-decoration: none;
+}
+#legalText{
+  height: 800px;
 }
 #textField{
   float: left;
   width: 60%;
   text-align: justify;
   text-justify: inter-word;
+}
+#textBody{
+  overflow-y: scroll;
+  height: 800px;
 }
 #timelineContent{
   margin-left: 1%;
@@ -27,10 +35,26 @@
   text-align: justify;
   text-justify: inter-word;
 }
+#timelineBody{
+  overflow-y: scroll;
+  height: 600px;
+}
 #mybuttons{
   display: flex;
   justify-content: left;
 }
 .custom-button{
   padding: 10px;
+}
+.dates-string {
+  /*opacity: 0.9;*/
+  transition: 0.5s;
+}
+.timeline-badge.warning {
+  background-color: #649ddb !important;
+}
+.timeline > li > .timeline-badge {
+  line-height: 46px;
+  border-style: solid;
+  border-width: 2px;
 }

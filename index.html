@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Legal</title>
+    <title>Recueil ATF</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,8 +22,7 @@
     <link href="dist/css/legal.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,20 +46,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Recueil numérique des ATF</a>
+                <a class="navbar-brand" href="index.html">Recueil numérique des Arrêts du Tribunal Fédéral</a>
             </div>
             <!-- /.navbar-header -->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Index</a>
+                            <a href="index.html"><i class="fa fa-legal fa-fw"></i> Accueil</a>
                         </li>
                         <li>
-                            <a href="atf.html"><i class="fa fa-dashboard fa-fw"></i> ATF</a>
+                            <a href="atf.html"><i class="fa fa-sort-amount-desc fa-fw"></i> Répertoire ATF</a>
                         </li>
                         <li>
-                            <a href="detectionatf.html"><i class="fa fa-dashboard fa-fw"></i> Détection ATF</a>
+                            <a href="detectionatf.html"><i class="fa fa-edit fa-fw"></i> Visualisation</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/danielamtoma/recueil-atf.github.io"><i class="fa fa-git fa-fw"></i> GitHub</a>
                         </li>
                     </ul>
                 </div>
@@ -72,15 +74,17 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Recueil numérique des Arrêts du Tribunal Fédéral</h1>
+                    <h1 class="page-header">Accueil</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+          <div class="row">
+            <div class="col-lg-12">
             <!-- Content -->
             <div id="textContent">
               <div class="panel panel-default">
-                <div class="panel-heading"><img src="pictures/balance-small.jpg" class="img-fluid" alt="Responsive image"></div>
+                <div class="panel-heading">Recueil numérique des Arrêts du Tribunal Fédéral</div>
                 <div class="panel-body">
 
 
@@ -88,8 +92,8 @@
                     <div class="panel panel-default">
                       <div class="panel-heading"><h4>Contexte de développement</h4></div>
                       <div class="panel-body">
-                      <p>Projet réalisé par <b>Daniela-Maria Toma</b> (Master en Humanités Numériques avec spécialisation Informatique pour les Sciences Humaines) dans le cadre du cours Publication numérique enseigné par Isaac Pante dans la Faculté des Lettres de l’Université de Lausanne.</p>
-                      <p>Projet disponible à l'adresse : https://danielamtoma.github.io/recueil-atf.github.io</p>
+                      <p>Projet réalisé par <b>Daniela-Maria Toma</b> (Master en Humanités Numériques avec spécialisation Informatique pour les Sciences Humaines) dans le cadre du cours Publications numériques enseigné par Isaac Pante dans la Faculté des Lettres de l’Université de Lausanne.</p>
+                      <p>Projet GitHub disponible à l'adresse : <a href="https://github.com/danielamtoma/recueil-atf.github.io">https://github.com/danielamtoma/recueil-atf.github.io</a></p>
                     </div>
                   </div>
                 </div>
@@ -114,10 +118,20 @@
                         <h5>2. Visualisation des Arrêts du Tribunal Fédéral (ATF)</h5>
                           <p>La page de visualisation des Arrêts permet de lire le contenu des arrêts et d'afficher le contenu des articles de lois mentionnés en passant la souris sur le lien. Il permet également d'afficher une timeline qui reprend les dates de l'exposé des faits. Passer la souris sur les dates de la timeline permet de mettre en surbrillance les phrases contenant ces dates.</p>
                         <h5>3. Copie du contenu d'un ATF pour visualisation enrichie</h5>
-                          <p>Si l'un des arrêt qui nous intéresse n'est pas disponible dans la liste, il est possible de se rendre sur le site https://www.bger.ch/ext/eurospider/live/fr/php/clir/http/index.php?lang=fr&type=simple_query&query_words=%2Bvaud&lang=fr&top_subcollection_clir=bge&from_year=1954&to_year=2019&x=55&y=15 et copier-coller le contenu au format texte sur la page: . Le texte sera alors enrichi des articles de loi et des dates.</p>
+                          <p>Si l'un des arrêt qui nous intéresse n'est pas disponible dans la liste, il est possible de se rendre sur le site <a href="https://www.bger.ch/ext/eurospider/live/fr/php/clir/http/index.php?lang=fr&type=simple_query&query_words=%2Bvaud&lang=fr&top_subcollection_clir=bge&from_year=1954&to_year=2019&x=55&y=15">du Tribunal Fédéral</a> et copier-coller le contenu au format texte sur <a href="detectionatf.html">la page de visualisation</a>. Le texte sera alors enrichi des articles de loi et des dates.</p>
                       </div>
                     </div>
                   </div>
+
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h4>Captures</h4></div>
+                        <div class="panel-body">
+                          <img src="pictures/visualisation_1.png" class="img-thumbnail float-left" style="padding: 10px;" alt="visualisation_1">
+                          <img src="pictures/visualisation_2.png" class="img-thumbnail float-right" style="padding: 10px; margin-left: 10px;" alt="visualisation_2">
+                        </div>
+                      </div>
+                    </div>
 
                   <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -185,6 +199,8 @@
             </div>
             <!-- End of content -->
         </div>
+      </div>
+    </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->

@@ -14,7 +14,6 @@ function validateText() {
         if(myArticles !== null && myArticles.length > 0){
           for( var l = 0; l < myArticles.length; l++){
              if(myArticles[l].match(myCtrlRe)){
-               //console.log("trop long: "+myArticles[l]);
                myArticles.splice(l, 1);
              }
           }
@@ -27,9 +26,7 @@ function validateText() {
         if(myArticles && myArticles.length > 0){
           myDictArticles[law] = [];
           myArticles.forEach(function(article){
-            //myNrArticle = article.replace(/([A|a]rt\.| et |al\. \d|,|CC)/g, ''); //supperimer al, et, etc.
             myNrArticle = article.replace(myArticleRe, '');
-            //console.log(myNrArticle);
             myNrArticle = myNrArticle.replace(/\s+/g, ' ').trim(); //supprimer les doubles espaces
             myNrArticleList = myNrArticle.match(/\d+/g);// récupérer uniquement les numéros d'articles
             myNrArticleList.forEach(function(articleNr){
@@ -42,33 +39,21 @@ function validateText() {
         // Pour remplacer les mentions d'articles en incluant une balise
         var myRegexLaw = '([A|a]rt\\. )(.*?)( '+law+')[\.|\,|\s|\;|\)|\:]';
         var myReLaw = new RegExp(myRegexLaw,'g');
-        //var myRegexLawReplace = '<span class="legal-reference '+law+'">$1$2$3</span><!--ﬁ-->'; // le signe ﬁ permet de stopper l'expression régulière dans la fonction "addReferences"
 
-
-        //myText = myText.replace(myReLaw, myRegexLawReplace);
-        //try{
-          myText = myText.replace(myReLaw, function($1, $2, $3, $4){
-            /*console.log("Art: "+$2);
-            console.log("Contenu: "+$3);
-            console.log("Code loi: "+$4);*/
-            // Controle de longueur de la phrase
-            var myCtrlRegex = '[a-zA-Z]{5}';
-            var myCtrlRe = new RegExp(myCtrlRegex,'g');
-            // Si le texte n'est pas trop long (=erreur)
-            if($1.match(myCtrlRe)){
-              var myRegexLawReplace = $1;
-              return myRegexLawReplace;
-            }
-            else{
-              var myRegexLawReplace = '<span class="legal-reference '+law+'">'+$1+'</span><!--ﬁ-->'; // le signe ﬁ permet de stopper l'expression régulière dans la fonction "addReferences"
-              //var myRegexReferenceReplace = $2+'<a id="popoverOption-'+popoverNumber+'" class="btn" href="#" data-content="'+data['Art. '+$3]['contenu']+'" rel="popover" data-placement="top" data-original-title="Art. '+$3+' '+key+' ('+data['Art. '+$3]['titre']+')">'+$3+'</a>'+$4;
-              //console.log(myRegexReferenceReplace);
-              //return myRegexReferenceReplace;
-              return myRegexLawReplace;
-            }
-          });
-        //}
-        //catch(e){}
+        myText = myText.replace(myReLaw, function($1, $2, $3, $4){
+          // Controle de longueur de la phrase
+          var myCtrlRegex = '[a-zA-Z]{5}';
+          var myCtrlRe = new RegExp(myCtrlRegex,'g');
+          // Si le texte n'est pas trop long (=erreur)
+          if($1.match(myCtrlRe)){
+            var myRegexLawReplace = $1;
+            return myRegexLawReplace;
+          }
+          else{
+            var myRegexLawReplace = '<span class="legal-reference '+law+'">'+$1+'</span><!--ﬁ-->'; // le signe ﬁ permet de stopper l'expression régulière dans la fonction "addReferences"
+            return myRegexLawReplace;
+          }
+        });
     });
     return myText;
   }
@@ -88,7 +73,6 @@ function validateText() {
               // Pour chaque texte de loi, on va récupérer la balise div correspondante
               myDictArticles[key].forEach(function(refArticle){
                 try{
-                  //console.log(refArticle);
                   var myRegexReference = '(<span class="legal-reference '+key+'">[^ﬁ]*?)('+refArticle+')([^<]*?</span>)';
                   var myReReference = new RegExp(myRegexReference,'g');
 
@@ -96,7 +80,6 @@ function validateText() {
                   myText = myText.replace(myReReference, function($1, $2, $3, $4){
                     popoverNumber+=1;
                     var myRegexReferenceReplace = $2+'<a id="popoverOption-'+popoverNumber+'" class="legal-links" href="#" data-content="'+data['Art. '+$3]['contenu']+'" rel="popover" data-placement="top" data-original-title="Art. '+$3+' '+key+' ('+data['Art. '+$3]['titre']+')">'+$3+'</a>'+$4;
-                    //console.log(myRegexReferenceReplace);
                     return myRegexReferenceReplace;
                   });
                 }
@@ -117,7 +100,7 @@ function validateText() {
 
   function writeNewText(myText){
     $("#textField").empty(); //supprimer le contenu de l'id "textField"
-    $("#textField").append('<div id="textContent"><div class="panel panel-default"><div class="panel-heading">Default Panel</div><div class="panel-body"><p>' + myText.trim() + '</p></div><div class="panel-footer">Panel Footer</div></div></div>'); //écrire le contenu nettoyé dans la div "legalText"
+    $("#textField").append('<div id="textContent"><div class="panel panel-default"><div class="panel-heading"><i class="fa fa-legal fa-fw"></i> Arrêt du Tribunal Fédéral</div><div id="textBody" class="panel-body"><p>' + myText.trim() + '</p></div><div class="panel-footer"> </div></div></div>'); //écrire le contenu nettoyé dans la div "legalText"
 
     //supprimer le bouton submit
     $("#mySubmitButton").empty(); //supprimer le contenu de l'id "legalText"
@@ -151,7 +134,6 @@ function validateText() {
          myDictDates[date] = myResult;
        });
     });
-    //console.log(myDictDates);
 
     $("#timeline-dates").empty(); //supprimer le contenu de la timeline
     i = 0;
@@ -159,7 +141,6 @@ function validateText() {
 
       // Pour supprimer les phrases qui contiennent d'autres phrases de la liste comme: "Par jugement du 23 décembre 2016" et "du 23 décembre 2016"
       for (var j = 0; j < myDictDates[key].length; j++) {
-        //console.log(myDictDates[key][i]);
         for (var k = 0; k < myDictDates[key].length; k++) {
           if(myDictDates[key][j].includes(myDictDates[key][k]) && myDictDates[key][j] != myDictDates[key][k]){
             // On supprime l'élément qui contient l'autre élément plus petit
@@ -178,21 +159,20 @@ function validateText() {
         var myRegexYears = '('+dateString+')';
         var myReYears = new RegExp(myRegexYears,'g');
         var myRegexYearsReplace = '<span class="dates-string '+key+'">'+dateString+'</span>';
-        //var myRegexYearsReplace = '<b>'+dateString+'</b>';
         myText = myText.replace(myReYears, myRegexYearsReplace);
       });
       if(i % 2 == 0){
-        $("#timeline-dates").append('<li><div class="timeline-badge warning"><i class="fa fa-clock-o"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+key+'</h4></div><div class="timeline-body"><p><span class="dates-string '+key+'" onmouseover="highlight('+key+')" onmouseout="unhighlight('+key+')">Afficher les mentions pour l\'année '+key+'</span></p></div></div>');
+        $("#timeline-dates").append('<li><div class="timeline-badge warning"><i class="fa fa-clock-o"></i></div><div class="timeline-panel dates-string '+key+'" onmouseover="highlight('+key+')" onmouseout="unhighlight('+key+')"><div class="timeline-heading"><h4 class="timeline-title">'+key+'</h4></div><div class="timeline-body"><p><span>Afficher les mentions pour l\'année '+key+'</span></p></div></div>');
       }
       else{
-        $("#timeline-dates").append('<li class="timeline-inverted"><div class="timeline-badge warning"><i class="fa fa-clock-o"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+key+'</h4></div><div class="timeline-body"><p><span class="dates-string '+key+'" onmouseover="highlight('+key+')" onmouseout="unhighlight('+key+')">Afficher les mentions pour l\'année '+key+'</span></p></div></div>');
+        $("#timeline-dates").append('<li class="timeline-inverted"><div class="timeline-badge warning"><i class="fa fa-clock-o"></i></div><div class="timeline-panel dates-string '+key+'" onmouseover="highlight('+key+')" onmouseout="unhighlight('+key+')"><div class="timeline-heading"><h4 class="timeline-title">'+key+'</h4></div><div class="timeline-body"><p><span>Afficher les mentions pour l\'année '+key+'</span></p></div></div>');
       }
       i++;
     }
     return myText;
   }
 
-  //var myText = $('#legalText').html(); //récupérer le contenu de l'id "legalText"
+  //récupérer le contenu de l'id "legalText"
   var myText = $('#legalText').val();
 
   // Liste des textes de loi
