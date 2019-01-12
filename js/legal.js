@@ -20,7 +20,7 @@ function validateText() {
         }
 
         //Art. 4 Cst, 312 al. 1 CC
-        var myArticleRegex = '([A|a]rt\\.|ter| et |al\\. \\d|,|ch\\. \\d|'+law+')[\.|\,|\s|\;|\)|\:]';
+        var myArticleRegex = '([A|a]rt\\.|ter|et|al\\.\\s*\\d|,|ch\\.\\s*\\d|ou|cbis|Tit\\.|fin\\.|'+law+')';
         var myArticleRe = new RegExp(myArticleRegex,'g');
 
         if(myArticles && myArticles.length > 0){
@@ -37,7 +37,9 @@ function validateText() {
           myDictArticles[law] = [...new Set(myDictArticles[law])];
         }
         // Pour remplacer les mentions d'articles en incluant une balise
-        var myRegexLaw = '([A|a]rt\\. )(.*?)( '+law+')[\.|\,|\s|\;|\)|\:]';
+        var myRegexLaw = '[A|a]rt\\.\\s+(.*?) '+law;
+        //var myRegexLaw = '([A|a]rt\\.\\s+)(.*?)('+law+')[\.|\,|\s|\;|\)|\:]';
+        //var myRegexLaw = '[A|a]rt\\.\\s+(.*?) '+law+'[\.|\,|\s|\;|\)|\:]';
         var myReLaw = new RegExp(myRegexLaw,'g');
 
         myText = myText.replace(myReLaw, function($1, $2, $3, $4){
@@ -59,9 +61,7 @@ function validateText() {
   }
 
   function addReferences(myText){
-    console.log(myDictArticles);
     if (Object.keys(myDictArticles).length > 0){
-      console.log("proceed with dict");
       for (var key in myDictArticles) {
         // récupérer le contenu des textes de lois utilisés dans le texte
         $.ajax({
@@ -73,14 +73,20 @@ function validateText() {
               // Pour chaque texte de loi, on va récupérer la balise div correspondante
               myDictArticles[key].forEach(function(refArticle){
                 try{
-                  var myRegexReference = '(<span class="legal-reference '+key+'">[^ﬁ]*?)('+refArticle+')([^<]*?</span>)';
+                  var myRegexReference = '(<span class="legal-reference '+key+'">[^ﬁ]*?[ |/|-]+)('+refArticle+')([^<]*?</span>)';
                   var myReReference = new RegExp(myRegexReference,'g');
 
                   // modification des articles et ajouts des liens
                   myText = myText.replace(myReReference, function($1, $2, $3, $4){
-                    popoverNumber+=1;
-                    var myRegexReferenceReplace = $2+'<a id="popoverOption-'+popoverNumber+'" class="legal-links" href="#" data-content="'+data['Art. '+$3]['contenu']+'" rel="popover" data-placement="top" data-original-title="Art. '+$3+' '+key+' ('+data['Art. '+$3]['titre']+')">'+$3+'</a>'+$4;
-                    return myRegexReferenceReplace;
+                    // Vériier qu'on utilise bien le bon article
+                    if($3 == refArticle){
+                      popoverNumber+=1;
+                      var myRegexReferenceReplace = $2+'<a id="popoverOption-'+popoverNumber+'" class="legal-links" href="#" data-content="'+data['Art. '+$3]['contenu']+'" rel="popover" data-placement="top" data-original-title="Art. '+$3+' '+key+' ('+data['Art. '+$3]['titre']+')">'+$3+'</a>'+$4;
+                      return myRegexReferenceReplace;
+                    }
+                    else{
+                      return $1;
+                    }
                   });
                 }
                 catch(e){}
